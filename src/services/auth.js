@@ -1,0 +1,3 @@
+const ENDPOINT_TOKEN = "YOUR-TOKEN-ID";
+
+export { ENDPOINT_TOKEN };

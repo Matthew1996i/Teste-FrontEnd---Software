@@ -31,6 +31,11 @@ button {
   cursor: pointer;
 }
 
+#create {
+  background-color: #198754;
+  padding: 10px 20px;
+}
+
 #select {
   background-color: #888888;
 }
