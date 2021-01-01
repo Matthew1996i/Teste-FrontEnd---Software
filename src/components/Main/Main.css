@@ -1,0 +1,40 @@
+.tableList {
+  display: flex;
+  flex-direction: column;
+}
+
+table {
+  display: table;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+thead {
+  border: 1px solid black;
+}
+
+th {
+  padding: 10px;
+}
+
+td {
+  text-align: center;
+  padding: 10px;
+}
+
+button {
+  padding: 5px 20px;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#select {
+  background-color: #888888;
+}
+
+#delete {
+  background-color: red;
+}

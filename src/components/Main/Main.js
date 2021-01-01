@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useCallback} from 'react'
 import axios from 'axios'
 
+import './Main.css'
 
 const Main = () => {
   
@@ -13,10 +14,15 @@ const Main = () => {
     "client" : "",
     "active" : false
   }
+
 ])
 
   const handdleData = useCallback( async() => {
-    await axios.get('https://crudcrud.com/api/982c95577fd9444c942356eba7cbe1cc/stock')
+    const token = 'a70548404a644ad8a480654d579177be'
+
+    const URL = `https://crudcrud.com/api/${token}/stock`
+
+    await axios.get(URL)
       .then(resp => {
         setStock(resp.data)
       })
@@ -32,39 +38,39 @@ const Main = () => {
 
 
   return(
-    <div>
-      <div className="listHeader">
-        <ul>
+    
+    <div className="tableList">
+      <table className="responsive-table">
+        <thead>
+          <tr className="tableTitle">
           {
             Object.keys(stock[0]).map(item => {
-              return <li key={item}>{item}</li>
+              return <th key={item}>{item}</th>
             })
           }
-        </ul>
-      </div>
-      <br/>
-      <div className="listContent">
-        <ul>
+          <th> </th>
+          <th> </th>
+          </tr>
+        </thead>
+        <tbody>
           {
             Object.values(stock).map(name => {
               return(
-                <li key={name._id}>
-                  <ul>
-                    <li>{name._id}</li>
-                    <li>{name.product}</li>
-                    <li>{name.price}</li>
-                    <li>{name.quantity}</li>
-                    <li>{name.client}</li>
-                    <li>{name.active}</li>
-                    
-                  </ul>
-                </li>
+                  <tr className="tableValues" key={name._id}>
+                    <td>{name._id}</td>
+                    <td>{name.product}</td>
+                    <td>{name.price}</td>
+                    <td>{name.quantity}</td>
+                    <td>{name.client}</td>
+                    <td>{name.active ? "Yes" : "No"}</td>
+                    <td><button id="select">Select</button></td>
+                    <td><button id="delete">Delete</button></td>
+                  </tr>
               )
             })
           }
-        </ul>
-      </div>
-
+        </tbody>
+      </table>
     </div>
   )
 }
