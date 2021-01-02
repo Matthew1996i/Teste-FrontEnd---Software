@@ -1,0 +1,43 @@
+.formContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+}
+
+form input {
+  font-size: 1rem;
+  padding: 5px;
+  margin-bottom: 8px;
+}
+
+.formContent div {
+  display: flex;
+  flex-direction: row;
+  display: flex;
+  align-items: flex-start;
+}
+
+.formContent div input {
+  margin: auto 15px auto 3px;
+}
+
+.formContent div label {
+  padding: 3px 8px;
+}
+
+.formContent button {
+  padding: 5px 20px;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #198754;
+  padding: 10px 20px;
+}

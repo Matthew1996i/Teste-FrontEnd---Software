@@ -3,14 +3,12 @@ import axios from "axios";
 
 import { history } from "../../history";
 
-import { ENDPOINT_TOKEN } from "../../services/auth";
+import { URL } from "../../services/auth";
 
 import "./Main.css";
 
 const Main = () => {
   const [stock, setStock] = useState([]);
-
-  const URL = `https://crudcrud.com/api/${ENDPOINT_TOKEN}/stock`;
 
   //this function, takes the data from the endpoint and presents it in the application
   const getStockData = useCallback(async (URL) => {
@@ -26,7 +24,12 @@ const Main = () => {
 
   //this function, redirects to the edit page with the data to edit
   const editForm = () => {
-    history.push("/form");
+    history.push("/edit");
+  };
+
+  //this function, redirects to the edit page with the data to edit
+  const createForm = () => {
+    history.push("/create");
   };
 
   //this function, removes data from a line at the endpoint
@@ -38,11 +41,10 @@ const Main = () => {
 
     const index = linesArray.findIndex((item) => item.id === id);
 
-    if(linesArray.length === 2){
+    if (linesArray.length === 2) {
       table.deleteRow(index);
       table.deleteRow(0);
-
-    }else{
+    } else {
       table.deleteRow(index);
     }
 
@@ -63,16 +65,20 @@ const Main = () => {
   }, []);
 
   if (stock.length === 0) {
-    return(
-      <div className="tableList">
-        <button id="create">Create a new product</button>
-        <h4>Nenhum item cadastrado em stock</h4>
-      </div>
-    )
-  }else{
     return (
       <div className="tableList">
-        <button id="create">Create a new product</button>
+        <button id="create" onClick={createForm}>
+          Create a new product
+        </button>
+        <h4>Nenhum item cadastrado em stock</h4>
+      </div>
+    );
+  } else {
+    return (
+      <div className="tableList">
+        <button id="create" onClick={createForm}>
+          Create a new product
+        </button>
         <table id="tableStock" className="responsive-table">
           <thead>
             <tr className="tableTitle">

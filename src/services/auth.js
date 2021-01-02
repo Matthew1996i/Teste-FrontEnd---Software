@@ -1,3 +1,5 @@
-const ENDPOINT_TOKEN = "YOUR-TOKEN-ID";
+const ENDPOINT_TOKEN = "03e3cc439d76454f9755ef3c465d1526";
 
-export { ENDPOINT_TOKEN };
+const URL = `https://crudcrud.com/api/${ENDPOINT_TOKEN}/stock`;
+
+export { URL };
