@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 import axios from "axios";
+import { useDispatch } from "react-redux";
 
 import { history } from "../../history";
 
@@ -9,6 +10,7 @@ import "./Main.css";
 
 const Main = () => {
   const [stock, setStock] = useState([]);
+  const dispatch = useDispatch();
 
   //this function, takes the data from the endpoint and presents it in the application
   const getStockData = useCallback(async (URL) => {
@@ -23,7 +25,11 @@ const Main = () => {
   }, []);
 
   //this function, redirects to the edit page with the data to edit
-  const editForm = () => {
+  const editForm = (id) => {
+    dispatch({
+      type: "EDIT_ITEM",
+      id: id,
+    });
     history.push("/edit");
   };
 
@@ -100,7 +106,12 @@ const Main = () => {
                   <td>{name.client}</td>
                   <td>{name.active ? "Yes" : "No"}</td>
                   <td>
-                    <button id="select" onClick={editForm}>
+                    <button
+                      id="select"
+                      onClick={() => {
+                        editForm(name._id);
+                      }}
+                    >
                       Select
                     </button>
                   </td>
